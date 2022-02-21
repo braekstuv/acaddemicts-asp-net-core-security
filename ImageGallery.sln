@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGallery.Client", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGallery.Model", "src\ImageGallery.Model\ImageGallery.Model.csproj", "{FBB30141-0D80-4001-BD3E-3C25652E3C2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaika.IDP", "src\Kaika.IDP\Kaika.IDP.csproj", "{C79F40E2-F8BB-4A7E-B0E8-B809AF12DAF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,11 @@ Global
 		{FBB30141-0D80-4001-BD3E-3C25652E3C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBB30141-0D80-4001-BD3E-3C25652E3C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBB30141-0D80-4001-BD3E-3C25652E3C2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C79F40E2-F8BB-4A7E-B0E8-B809AF12DAF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C79F40E2-F8BB-4A7E-B0E8-B809AF12DAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C79F40E2-F8BB-4A7E-B0E8-B809AF12DAF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C79F40E2-F8BB-4A7E-B0E8-B809AF12DAF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal

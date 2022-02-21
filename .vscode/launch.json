@@ -5,7 +5,8 @@
       "name": "Debug Entire Solution",
       "configurations": [
         "Debug ImageGallery.API",
-        "Debug ImageGallery.Client"
+        "Debug ImageGallery.Client",
+        "Debug Kaika.IDP"
       ],
       "presentation": {
         "group": "",
@@ -51,6 +52,31 @@
       "program": "${workspaceFolder}/src/ImageGallery.API/bin/Debug/net6.0/ImageGallery.API.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/ImageGallery.API",
+      "stopAtEntry": false,
+      // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      // Use IntelliSense to find out which attributes exist for C# debugging
+      // Use hover for the description of the existing attributes
+      // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+      "name": "Debug Kaika.IDP",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/src/Kaika.IDP/bin/Debug/net6.0/Kaika.IDP.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/Kaika.IDP",
       "stopAtEntry": false,
       // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
       "serverReadyAction": {
