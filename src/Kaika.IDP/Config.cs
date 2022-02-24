@@ -23,6 +23,8 @@ public static class Config
                 {
                     ClientName = "Image Gallery",
                     ClientId = "imagegalleryclient",
+                    // setting option to true could lead to issues where id token exceeds browser uri length limit
+                    // AlwaysIncludeUserClaimsInIdToken = true,
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
                     RedirectUris = new List<string>
