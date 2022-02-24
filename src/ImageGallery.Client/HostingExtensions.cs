@@ -32,6 +32,7 @@ public static class HostingExtensions
             options.ResponseType = "code";
             options.UsePkce = true;
             //options.CallbackPath = new PathString("...");
+            //options.SignedOutCallbackPath = new PathString("...");
             options.Scope.Add("openid");
             options.Scope.Add("profile");
             options.SaveTokens = true;
