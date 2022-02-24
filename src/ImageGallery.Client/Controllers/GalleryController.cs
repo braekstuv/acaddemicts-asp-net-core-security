@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ImageGallery.Client;
 
@@ -191,5 +192,10 @@ public class GalleryController : Controller
         {
             Debug.WriteLine($"Claim Type: {claim.Type} - Claim value: {claim.Value}");
         }
+    }
+
+    public async Task Logout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
     }
 }
