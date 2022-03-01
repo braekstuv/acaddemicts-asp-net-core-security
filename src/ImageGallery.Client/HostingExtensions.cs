@@ -43,9 +43,11 @@ public static class HostingExtensions
             options.ClientId = "imagegalleryclient";
             options.ResponseType = "code";
             options.Scope.Add("address");
+            options.Scope.Add("roles");
             options.ClaimActions.DeleteClaim("sid");
             options.ClaimActions.DeleteClaim("idp");
             options.ClaimActions.DeleteClaim("auth_time");
+            options.ClaimActions.MapUniqueJsonKey("role", "role");
             options.SaveTokens = true;
             options.ClientSecret = "secret";
             options.GetClaimsFromUserInfoEndpoint = true;

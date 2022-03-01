@@ -19,6 +19,7 @@ public class TestUsers
                 new Claim("given_name", "Frank"),
                 new Claim("family_name", "Underwood"),
                 new Claim("address", "Main Road 1"),
+                new Claim("role", "FreeUser"),
             }
         },
         new TestUser{
@@ -29,6 +30,7 @@ public class TestUsers
                 new Claim("given_name", "Claire"),
                 new Claim("family_name", "Underwood"),
                 new Claim("address", "Big Street 2"),
+                new Claim("role", "PayingUser"),
             }
         },
     };
