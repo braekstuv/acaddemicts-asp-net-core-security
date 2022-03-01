@@ -10,6 +10,7 @@ public static class Config
         {
             new IdentityResources.OpenId(),
             new IdentityResources.Profile(),
+            new IdentityResources.Address(),
         };
 
     public static IEnumerable<ApiScope> ApiScopes =>
@@ -38,7 +39,8 @@ public static class Config
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Address,
                     },
                     ClientSecrets =
                     {

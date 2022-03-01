@@ -30,17 +30,12 @@ public static class HostingExtensions
         .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
         .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
         {
+            // See https://github.com/dotnet/aspnetcore/blob/v6.0.2/src/Security/Authentication/OpenIdConnect/src/OpenIdConnectOptions.cs for default options
             options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.Authority = "https://localhost:44318";
             options.ClientId = "imagegalleryclient";
             options.ResponseType = "code";
-            options.UsePkce = true;
-            //options.CallbackPath = new PathString("...");
-            //options.SignedOutCallbackPath = new PathString("...");
-            options.Scope.Add("openid");
-            options.Scope.Add("profile");
-            // Will add the nbf claim (instead of removing it by default)
-            // options.ClaimActions.Remove("nbf");
+            options.Scope.Add("address");
             options.ClaimActions.DeleteClaim("sid");
             options.ClaimActions.DeleteClaim("idp");
             options.ClaimActions.DeleteClaim("auth_time");
