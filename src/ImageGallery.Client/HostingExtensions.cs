@@ -36,7 +36,10 @@ public static class HostingExtensions
             options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
         })
-        .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+        {
+            options.AccessDeniedPath = "/Authorization/AccessDenied";
+        })
         .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
         {
             // See https://github.com/dotnet/aspnetcore/blob/v6.0.2/src/Security/Authentication/OpenIdConnect/src/OpenIdConnectOptions.cs for default options
