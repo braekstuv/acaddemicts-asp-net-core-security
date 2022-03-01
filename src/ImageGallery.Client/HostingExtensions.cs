@@ -1,4 +1,5 @@
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Net.Http.Headers;
@@ -38,6 +39,11 @@ public static class HostingExtensions
             //options.SignedOutCallbackPath = new PathString("...");
             options.Scope.Add("openid");
             options.Scope.Add("profile");
+            // Will add the nbf claim (instead of removing it by default)
+            // options.ClaimActions.Remove("nbf");
+            options.ClaimActions.DeleteClaim("sid");
+            options.ClaimActions.DeleteClaim("idp");
+            options.ClaimActions.DeleteClaim("auth_time");
             options.SaveTokens = true;
             options.ClientSecret = "secret";
             options.GetClaimsFromUserInfoEndpoint = true;
