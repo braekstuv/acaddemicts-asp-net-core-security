@@ -1,14 +1,15 @@
-using Microsoft.AspNetCore.Mvc;
-using ImageGallery.Client.ViewModels;
-using System.Text.Json;
-using ImageGallery.Model;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Diagnostics;
+using System.Net;
+using System.Text.Json;
+using IdentityModel.Client;
+using ImageGallery.Client.ViewModels;
+using ImageGallery.Model;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using IdentityModel.Client;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace ImageGallery.Client;
 
@@ -35,15 +36,21 @@ public class GalleryController : Controller
         var response = await httpClient.SendAsync(
             request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
-        response.EnsureSuccessStatusCode();
-
-        using (var responseStream = await response.Content.ReadAsStreamAsync())
+        if (response.IsSuccessStatusCode)
         {
-            return View(new GalleryIndexViewModel(
-                await JsonSerializer.DeserializeAsync<List<Image>>(responseStream)));
+            using (var responseStream = await response.Content.ReadAsStreamAsync())
+            {
+                return View(new GalleryIndexViewModel(
+                    await JsonSerializer.DeserializeAsync<List<Image>>(responseStream)));
+            }
+        }
+        else if (response.StatusCode == HttpStatusCode.Unauthorized ||
+            response.StatusCode == HttpStatusCode.Forbidden)
+        {
+            return RedirectToAction("AccessDenied", "Authorization");
         }
 
-        return View(new GalleryIndexViewModel(new List<Image>()));
+        throw new Exception("Problem accessing the API");
     }
 
     public async Task<IActionResult> EditImage(Guid id)
