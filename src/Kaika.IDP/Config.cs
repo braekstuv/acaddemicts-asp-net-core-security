@@ -15,6 +15,16 @@ public static class Config
                 "roles",
                 "Your role(s)",
                 new List<string>() { "role" }
+            ),
+            new IdentityResource(
+                "country",
+                "The country you're living in",
+                new List<string>() { "country" }
+            ),
+            new IdentityResource(
+                "subscriptionlevel",
+                "Your subscription level",
+                new List<string>() { "subscriptionlevel" }
             )
         };
 
@@ -59,7 +69,9 @@ public static class Config
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Address,
                         "roles",
-                        "imagegalleryapi.read"
+                        "imagegalleryapi.read",
+                        "country",
+                        "subscriptionlevel"
                     },
                     ClientSecrets =
                     {
