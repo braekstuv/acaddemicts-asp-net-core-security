@@ -23,6 +23,7 @@ public static class Config
             {
                 new ApiResource("imagegalleryapi", "Image Gallery API")
                 {
+                    UserClaims = { "role" },
                     Scopes = { "imagegalleryapi.read" }
                 }
             };
