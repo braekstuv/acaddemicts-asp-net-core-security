@@ -1,6 +1,7 @@
 using ImageGallery.API.Entities;
 using ImageGallery.API.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ImageGallery.API;
 
