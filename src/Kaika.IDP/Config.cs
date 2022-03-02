@@ -18,10 +18,19 @@ public static class Config
             )
         };
 
+    public static IEnumerable<ApiResource> ApiResources =>
+        new ApiResource[]
+            {
+                new ApiResource("imagegalleryapi", "Image Gallery API")
+                {
+                    Scopes = { "imagegalleryapi.read" }
+                }
+            };
+
     public static IEnumerable<ApiScope> ApiScopes =>
         new ApiScope[]
             {
-                new ApiScope("imagegalleryapi", "Image Gallery API")
+                new ApiScope("imagegalleryapi.read", "Read Image Gallery API")
             };
 
     public static IEnumerable<Client> Clients =>
@@ -49,7 +58,7 @@ public static class Config
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Address,
                         "roles",
-                        "imagegalleryapi"
+                        "imagegalleryapi.read"
                     },
                     ClientSecrets =
                     {
