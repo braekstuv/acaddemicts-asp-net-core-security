@@ -211,8 +211,7 @@ public class GalleryController : Controller
         await HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
     }
 
-    // multiple roles can be passed, separated by a comma ','
-    [Authorize(Roles = "PayingUser")]
+    [Authorize(Policy = "CanOrderFrame")]
     public async Task<IActionResult> OrderFrame()
     {
         var idpClient = _httpClientFactory.CreateClient("IDPClient");
