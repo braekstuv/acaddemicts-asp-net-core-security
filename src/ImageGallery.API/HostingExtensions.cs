@@ -1,6 +1,8 @@
 using System.IdentityModel.Tokens.Jwt;
+using ImageGallery.API.Authorization;
 using ImageGallery.API.Entities;
 using ImageGallery.API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 namespace ImageGallery.API;
 
@@ -12,6 +14,21 @@ public static class HostingExtensions
 
         builder.Services.AddControllers()
          .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.AddScoped<IAuthorizationHandler, MustOwnImageHandler>();
+
+        builder.Services.AddAuthorization(authorizationOptions =>
+        {
+            authorizationOptions.AddPolicy(
+                "MustOwnImage",
+                policyBuilder =>
+                {
+                    policyBuilder.RequireAuthenticatedUser();
+                    policyBuilder.AddRequirements(
+                        new MustOwnImageRequirement());
+                });
+        });
 
         builder.Services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
