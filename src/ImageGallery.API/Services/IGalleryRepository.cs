@@ -1,12 +1,12 @@
-﻿using ImageGallery.API.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using ImageGallery.API.Entities;
 
 namespace ImageGallery.API.Services;
 
 public interface IGalleryRepository
 {
-    IEnumerable<Image> GetImages();
+    IEnumerable<Image> GetImages(string ownerId);
     bool IsImageOwner(Guid id, string ownerId);
     Image GetImage(Guid id);
     bool ImageExists(Guid id);

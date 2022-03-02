@@ -1,7 +1,7 @@
-﻿using ImageGallery.API.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ImageGallery.API.Entities;
 
 namespace ImageGallery.API.Services;
 public class GalleryRepository : IGalleryRepository, IDisposable
@@ -24,9 +24,10 @@ public class GalleryRepository : IGalleryRepository, IDisposable
         return _context.Images.FirstOrDefault(i => i.Id == id);
     }
 
-    public IEnumerable<Image> GetImages()
+    public IEnumerable<Image> GetImages(string ownerId)
     {
         return _context.Images
+            .Where(i => i.OwnerId == ownerId)
             .OrderBy(i => i.Title).ToList();
     }
 

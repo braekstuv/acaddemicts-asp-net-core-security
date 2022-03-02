@@ -1,14 +1,15 @@
+using System.IdentityModel.Tokens.Jwt;
 using ImageGallery.API.Entities;
 using ImageGallery.API.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-
 namespace ImageGallery.API;
 
 public static class HostingExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
+        JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
         builder.Services.AddControllers()
          .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
 
